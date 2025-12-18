@@ -1,0 +1,41 @@
+# ===============================
+# Secrets & Environment Variables
+# ===============================
+.env
+.streamlit/secrets.toml
+
+# ===============================
+# Python virtual environments
+# ===============================
+venv/
+.venv/
+env/
+ENV/
+
+# ===============================
+# Python cache
+# ===============================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ===============================
+# Streamlit
+# ===============================
+.streamlit/config.toml
+
+# ===============================
+# OS / Editor junk
+# ===============================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ===============================
+# Logs & temporary files
+# ===============================
+*.log
+*.sqlite
+*.db
