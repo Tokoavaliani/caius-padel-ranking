@@ -41,6 +41,18 @@ class Match:
     team2_score: Optional[int] = None
     created_at: Optional[datetime] = None
 
+    @property
+    def match_score(self) -> str:
+        """Return formatted match score (winner first)"""
+        winner_score = getattr(self, f"team{self.winning_team}_score")
+        loser_score = getattr(self, f"team{3 - self.winning_team}_score")
+
+        if winner_score is None or loser_score is None:
+            score = "N/A"
+        else:
+            score = f"{winner_score} - {loser_score}"
+        return score
+    
 @dataclass
 class RatingChange:
     """ Represent a rating change event used to track history and for undo functionality """

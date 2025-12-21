@@ -6,24 +6,27 @@ def admin_login():
         st.session_state.is_admin = False
 
     with st.sidebar:
-        with st.container(border=True):
-            st.markdown("### 🔐 Admin Area")
-
-            if st.session_state.is_admin:
+        if st.session_state.is_admin:
+            with st.container(border=True):
+                st.markdown("### 🔐 Admin Area")
                 st.success("🟢 Admin mode enabled")
 
                 if st.button("Logout"):
                     st.session_state.is_admin = False
                     st.rerun()
-            else:
+
+        else:
+            with st.form("admin_login_form"):
+                st.markdown("### 🔐 Admin Area")
                 password = st.text_input(
                     "Admin password",
                     type="password"
                 )
+                submitted = st.form_submit_button("Login")
 
-                if st.button("Login"):
-                    if password == st.secrets["admin"]["password"]:
-                        st.session_state.is_admin = True
-                        st.rerun()
-                    else:
-                        st.error("Incorrect password")
+            if submitted:
+                if password == st.secrets["admin"]["password"]:
+                    st.session_state.is_admin = True
+                    st.rerun()
+                else:
+                    st.error("Incorrect password")
